@@ -115,18 +115,21 @@ body{
   font-size: 12px;
 }
 
-.sidebar-content {
-  position: relative;
-  top: 0;
-  z-index: 999;
-  width: 100%;
-  height: 110px;
-  padding: 20px 20px 0 20px;
+{# /* // Header layout */ #}
+
+.header-inner {
+  display: flex;
+
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 15px;
+  height: 60px;
+  border-bottom-left-radius: 20px;
 }
 
-.sidebar-content-transparent {
-  position: absolute;
-  top: 0;
+.header-logo-wrap {
+  display: none;
+  flex-shrink: 0;
 }
 
 {# /* // Scrollbars */ #}
@@ -1230,12 +1233,13 @@ p{
 
 .head-main {
   position: fixed;
-  top:0;
   right: 0;
   z-index: 1040;
-  border-radius: 0 0 0 10px;
   -webkit-backface-visibility: hidden;
   -webkit-transform: scale(1);
+}
+
+.head-offset {
 }
 
 .head-z-index {
@@ -1250,7 +1254,7 @@ p{
   right: 0;
   left: 0;
   z-index: 999;
-  padding: 5px 130px 5px 0;
+  padding: 5px 15px 5px 0;
   font-size: 12px;
 }
 
@@ -1258,22 +1262,22 @@ p{
 
 .logo-text-container, 
 .logo-img-container {
-  max-width: 60%;
+  max-width: 200px;
 }
 .logo-img{
   vertical-align: middle;
   max-width: 100%;
-  max-height: 80px;
+  max-height: 50px;
 }
 
 .logo-img-small {
-  max-width: 60%;
-  max-height: 40px;
+  max-width: 120px;
+  max-height: 35px;
 }
 
 .logo-img-medium {
-  max-width: 80%;
-  max-height: 60px;
+  max-width: 160px;
+  max-height: 45px;
 }
 
 {# /* // Nav */ #}
@@ -1351,7 +1355,6 @@ p{
   letter-spacing: 1px;
 }
 
-.sidebar-content .footer-menu-link,
 .modal-invert .footer-menu-link {
   font-size: 10px;
 }
@@ -1359,14 +1362,17 @@ p{
 {# /* // Cart widget and search */ #}
 
 .utilities-container {
-  padding: 10px;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  flex-shrink: 0;
 }
 .utilities-item {
   width: 25px;
-  height: 50px;
-  display: inline-block;
-  margin: 0 5px;
-  padding: 15px 0;
+  height: 40px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
   text-align: center;
   font-size: 18px;
   vertical-align: middle;
@@ -1892,49 +1898,100 @@ p{
 
   {# /* //// Nav */ #}
 
-  .sidebar-content {
-    position: fixed;
+  {# /* Desktop header layout */ #}
+  .header-logo-wrap{
     display: flex;
-    flex-direction: column;
-    width: 250px;
-    height: 100%;
-    overflow-y: auto;
+  }
+  .head-main {
+    height: 70px;
   }
 
-  .nav-with-fixed-footer {
-    display: flex;
-    flex-direction: column;
-    height: 100%;
+  .header-inner {
+    height: 70px;
+    padding: 0 30px;
   }
 
-  .nav-scrollable-area {
-    height: 100%;
-    overflow: auto;
-  }
-
-  .nav-list-panel {
-    width: 250px;
+  .head-offset {
+   
   }
 
   .main-content {
-    margin-left: 250px;
+    margin-left: 0;
   }
 
-  .nav-list > li > .nav-list-link {
-    font-size: 20px;
+  {# /* Desktop horizontal nav */ #}
+
+  .desktop-nav {
+    flex: 1;
+    justify-content: center;
+    overflow: visible;
   }
 
-  .nav-list .nav-list-link {
-    font-size: 14px;
+  .desktop-nav-list {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin: 0;
+    padding: 0;
+    list-style: none;
   }
 
-  .nav-list-arrow {
-    font-size: 10px;
+  .desktop-nav-list > li {
+    position: relative;
   }
 
-  .nav-account {
+  .desktop-nav-list > li > .nav-list-link {
+    font-size: 13px;
+    font-weight: 500;
+    padding: 8px 10px;
+    white-space: nowrap;
+    letter-spacing: 0.3px;
+    text-transform: uppercase;
+  }
+
+  .desktop-nav-list .nav-list-arrow {
+    display: inline-flex;
+    padding: 0 0 0 4px;
+    font-size: 8px;
+  }
+
+  .desktop-nav-list .nav-list-arrow .icon-2x {
+    width: 10px;
+    height: 10px;
+    transform: rotate(90deg);
+  }
+
+  {# /* Desktop dropdown submenus */ #}
+
+  .desktop-nav-list .item-with-subitems:hover > .nav-list-panel {
+    display: flex !important;
+    flex-direction: column;
+  }
+
+  .desktop-nav-list .nav-list-panel {
     position: absolute;
-    bottom: 0;
+    top: 100%;
+    left: 0;
+    z-index: 1050;
+    width: 240px;
+    height: auto;
+    max-height: 70vh;
+    overflow-y: auto;
+    padding: 12px 0;
+    list-style: none;
+    display: none !important;
+  }
+
+  .desktop-nav-list .nav-list-panel .nav-list-link {
+    font-size: 13px;
+    font-weight: 400;
+    padding: 8px 20px;
+  }
+
+  .desktop-nav-list .nav-list-panel .js-toggle-menu-back,
+  .desktop-nav-list .nav-list-panel .js-toggle-menu-close,
+  .desktop-nav-list .nav-list-panel .h2 {
+    display: none;
   }
 
   {# /* ////Header */ #}
@@ -1948,7 +2005,7 @@ p{
   }
 
   .section-advertising {
-    left: 250px;
+    left: 0;
     padding: 5px 0;
   }
 

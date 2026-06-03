@@ -1397,11 +1397,45 @@ input[type=number] {
 {# /* // Header */ #}
 
 .head-main{
-  background-color: $negative-color;
+
   transition: all 0.1s ease;
   .svg-icon-text {
     color: $positive-color;
     fill: $positive-color;
+  }
+  .link-contrast {
+    color: $positive-color;
+    fill: $positive-color;
+    &:hover,
+    &:focus {
+      color: rgba($positive-color, .8);
+      fill: rgba($positive-color, .8);
+    }
+  }
+}
+.header-inner{
+  background-color: $negative-color;
+}
+
+.desktop-nav .nav-list-link {
+  color: $positive-color;
+  fill: $positive-color;
+  &:hover,
+  &:focus {
+    color: rgba($positive-color, .7);
+    fill: rgba($positive-color, .7);
+  }
+}
+
+.desktop-nav .nav-list-panel {
+  background-color: $negative-color;
+  box-shadow: 0 4px 16px rgba(0,0,0,.12);
+  .nav-list-link {
+    color: $positive-color;
+    &:hover,
+    &:focus {
+      color: rgba($positive-color, .7);
+    }
   }
 }
 
@@ -1423,17 +1457,7 @@ input[type=number] {
   background: $primary-color;
 }
 
-.sidebar-content {
-  color: $negative-color;
-  background-color: $positive-color;
-  &-transparent {
-    color: $negative-color;
-    background-color: transparent;
-  }
-}
-
 .nav-list-link,
-.sidebar-content .footer-menu-link,
 .modal-invert .footer-menu-link {
   color: $negative-color;
   fill: $negative-color;
@@ -1513,8 +1537,9 @@ footer {
 
 @media (min-width: 768px) { 
 
-  .sidebar-content-transparent {
-    background-color: $positive-color;
+  .head-main {
+    background-color: $negative-color;
+    width: 100%;
   }
 
   {# /* Product grid */ #}

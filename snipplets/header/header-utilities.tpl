@@ -1,8 +1,20 @@
-<div class="utilities-container text-right">
+<div class="utilities-container">
 	<div class="utilities-item">
 		<a href="#" class="js-modal-open js-toggle-search utilities-link" data-toggle="#nav-search" aria-label="{{ 'Buscador' | translate }}">
 			{% include "snipplets/svg/search.tpl" with {svg_custom_class: "icon-inline icon-w-14 svg-icon-text"} %}
 		</a>
+	</div>
+	{# Account link — desktop only #}
+	<div class="utilities-item d-none d-md-inline-block">
+		{% if not customer %}
+			<a href="{{ store.customer_login_url }}" class="utilities-link" aria-label="{{ 'Ingresar' | translate }}">
+				{% include "snipplets/svg/user.tpl" with {svg_custom_class: "icon-inline icon-w-14 svg-icon-text"} %}
+			</a>
+		{% else %}
+			<a href="{{ store.customer_home_url }}" class="utilities-link" aria-label="{{ 'Mi cuenta' | translate }}">
+				{% include "snipplets/svg/user.tpl" with {svg_custom_class: "icon-inline icon-w-14 svg-icon-text"} %}
+			</a>
+		{% endif %}
 	</div>
 	{% if not store.is_catalog %}
 		<div class="utilities-item">

@@ -5,36 +5,27 @@
 {# Header #}
 
 <header class="js-head-main head-main" data-store="head">
+    <div class="header-inner">
 
-    {% snipplet "header/header-utilities.tpl" %}
+        {# Logo — left #}
+        <div class="header-logo-wrap">
+            {% snipplet "header/header-logo.tpl" %}
+        </div>
 
+        {# Desktop nav — center (hidden on mobile) #}
+        <nav class="desktop-nav d-none d-md-flex">
+            <ul class="nav-list desktop-nav-list" data-store="navigation">
+                {% snipplet "navigation/navigation-nav-list.tpl" %}
+            </ul>
+        </nav>
+
+        {# Utilities — right (search, account, cart, hamburger) #}
+        {% snipplet "header/header-utilities.tpl" %}
+
+    </div>
 </header>
 
 {% include "snipplets/notification.tpl" with {order_notification: true} %}
-
-{% if template == 'home' %}
-    {% set has_home_slider = settings.slider %}
-{% endif %}
-{% if template == 'category' %}
-    {% set has_category_image = category.images is not empty or "banner-products.jpg" | has_custom_image %}
-{% endif %}
-{% if template == 'page' %}
-    {% set has_page_image = page.name == settings.page_title and "us-picture.jpg" | has_custom_image %}
-{% endif %}
-
-<div class="sidebar-content{% if has_home_slider or has_page_image or has_category_image or template == 'product' %} {% if settings.ad_bar and settings.ad_text %}js-sidebar-content {% endif %}sidebar-content-transparent{% endif %}">
-    {% snipplet "header/header-logo.tpl" %}
-    <div class="d-md-block d-none nav-scrollable-area">
-        <div class="nav-with-fixed-footer">
-            <div class="nav-scrollable-area">
-                <div class="nav-body">
-                    {% include "snipplets/navigation/navigation-panel.tpl" with {primary_links: true} %}
-                </div>
-            </div>
-            {% include "snipplets/navigation/navigation-panel.tpl" %}
-        </div>
-    </div>
-</div>
 
 {% include "snipplets/notification.tpl" with {add_to_cart: true} %}
 
