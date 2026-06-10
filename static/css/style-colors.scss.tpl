@@ -1539,7 +1539,6 @@ footer {
 
   .head-main {
     background-color: $negative-color;
-    width: 100%;
   }
 
   {# /* Product grid */ #}

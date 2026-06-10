@@ -5,6 +5,7 @@
 {# Header #}
 
 <header class="js-head-main head-main" data-store="head">
+
     <div class="header-inner">
 
         {# Logo — left #}
@@ -24,6 +25,11 @@
 
     </div>
 </header>
+
+{# Logo — left Mobile #}
+<div class="header-logo-wrapMobile">
+    {% snipplet "header/header-logo.tpl" %}
+</div>
 
 {% include "snipplets/notification.tpl" with {order_notification: true} %}
 
