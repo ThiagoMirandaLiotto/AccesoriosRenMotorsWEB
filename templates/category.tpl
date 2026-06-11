@@ -1,5 +1,19 @@
 {% set has_filters_available = has_filters_enabled and (filter_categories is not empty or product_filters is not empty) %}
 
+{% if '/productos/' in category.url %}
+<style>
+    @media (max-width: 767.98px) {
+        .js-overlay.site-overlay {
+            margin-top: 20px;
+            display: block !important;
+        }
+        .header-logo-wrapMobile {
+            display: none;
+        }
+    }
+</style>
+{% endif %}
+
 
 {# Only remove this if you want to take away the theme onboarding advices #}
 {% set show_help = not has_products %}
